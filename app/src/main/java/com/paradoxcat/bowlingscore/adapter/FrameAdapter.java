@@ -74,9 +74,9 @@ public class FrameAdapter extends RecyclerView.Adapter<FrameAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         final Frame frame = frameList.get(position);
 
-        viewHolder.getFirstValue().setText(frame.getId());
-        viewHolder.getSecondValue().setText(frame.getId());
-        viewHolder.getTotalValue().setText(frame.getId());
+        viewHolder.getFirstValue().setText(String.valueOf(frame.getBallThrows().get(0).getValue()));
+        viewHolder.getSecondValue().setText(String.valueOf(frame.getBallThrows().get(1).getValue()));
+        viewHolder.getTotalValue().setText(String.valueOf(frame.getScore()));
     }
 
     // Return the size of the dataset (invoked by the layout manager)

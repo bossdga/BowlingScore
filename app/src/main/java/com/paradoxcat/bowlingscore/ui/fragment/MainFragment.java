@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.paradoxcat.bowlingscore.R;
+import com.paradoxcat.bowlingscore.adapter.FrameAdapter;
 import com.paradoxcat.bowlingscore.model.BallThrow;
 import com.paradoxcat.bowlingscore.model.BowlingGame;
 import com.paradoxcat.bowlingscore.model.Frame;
@@ -24,7 +25,7 @@ public class MainFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private List<Frame> frames;
+    private FrameAdapter adapter;
 
     public MainFragment() {
     }
@@ -33,7 +34,6 @@ public class MainFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        startBowlingGame();
     }
 
     @Override
@@ -46,6 +46,8 @@ public class MainFragment extends BaseFragment {
         mRecyclerView = rootView.findViewById(R.id.recyclerView);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
+        startBowlingGame();
 
         return rootView;
     }
@@ -85,9 +87,10 @@ public class MainFragment extends BaseFragment {
             }
         }
 
-        frames = bowlingGame.getFrames();
+        adapter = new FrameAdapter(bowlingGame.getFrames(), MainFragment.this.getActivity());
+        mRecyclerView.setAdapter(adapter);
 
-        System.out.println("::: " + bowlingGame.getScore() + " in " + frames.size() + " frames");
+        System.out.println("::: " + bowlingGame.getScore());
     }
 
     private int getThrowNumber() {

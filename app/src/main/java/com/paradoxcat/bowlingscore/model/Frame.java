@@ -8,7 +8,6 @@ import java.util.List;
  */
 public abstract class Frame {
 
-    protected int id;
     protected List<BallThrow> ballThrows;
     protected int startingThrow;
     protected int score;
@@ -19,8 +18,8 @@ public abstract class Frame {
         this.startingThrow = ballThrows.size();
     }
 
-    abstract protected int getScore();
-    abstract protected int getFrameSize();
+    public abstract int getScore();
+    protected abstract int getFrameSize();
 
     protected BallThrow firstExtraBall() {
         return ballThrows.get(startingThrow + getFrameSize());
@@ -30,12 +29,8 @@ public abstract class Frame {
         return ballThrows.get(startingThrow + getFrameSize() + 1);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public List<BallThrow> getBallThrows() {
+        return this.ballThrows;
     }
 
 }
