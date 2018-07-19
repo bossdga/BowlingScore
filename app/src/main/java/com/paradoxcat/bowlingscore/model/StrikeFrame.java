@@ -10,7 +10,7 @@ public class StrikeFrame extends Frame {
 
     public StrikeFrame(List<BallThrow> ballThrows) {
         super(ballThrows);
-        ballThrows.add(new BallThrow(10));
+        this.ballThrows.add(new BallThrow(10));
     }
 
     @Override

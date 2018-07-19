@@ -10,7 +10,7 @@ public class BonusFrame extends Frame {
 
     public BonusFrame(List<BallThrow> ballThrows, BallThrow firstThrow) {
         super(ballThrows);
-        ballThrows.add(firstThrow);
+        this.ballThrows.add(firstThrow);
     }
 
     @Override

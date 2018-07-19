@@ -10,13 +10,13 @@ public class OpenFrame extends Frame {
 
     public OpenFrame(List<BallThrow> ballThrows, BallThrow firstThrow, BallThrow secondThrow) {
         super(ballThrows);
-        ballThrows.add(firstThrow);
-        ballThrows.add(secondThrow);
+        this.ballThrows.add(firstThrow);
+        this.ballThrows.add(secondThrow);
     }
 
     @Override
     public int getScore() {
-        return ballThrows.get(startingThrow).getValue() + ballThrows.get(startingThrow + 1).getValue();
+        return this.ballThrows.get(startingThrow).getValue() + ballThrows.get(startingThrow + 1).getValue();
     }
 
     @Override

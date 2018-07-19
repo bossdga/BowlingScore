@@ -10,8 +10,8 @@ public class SpareFrame extends Frame {
 
     public SpareFrame(List<BallThrow> ballThrows, BallThrow firstThrow, BallThrow secondThrow) {
         super(ballThrows);
-        ballThrows.add(firstThrow);
-        ballThrows.add(secondThrow);
+        this.ballThrows.add(firstThrow);
+        this.ballThrows.add(secondThrow);
     }
 
     @Override
