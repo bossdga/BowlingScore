@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by diego.alonso 17/07/2018.
- * Copyright © 2018. Fleetmatics Development Limited. All rights reserved.
+ * Class that manages a Bowling Game
  */
 public class BowlingGame {
 

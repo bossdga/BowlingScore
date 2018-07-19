@@ -1,10 +1,8 @@
 package com.paradoxcat.bowlingscore.model;
 
 /**
- * Created by diego.alonso 17/07/2018.
- * Copyright © 2018. Fleetmatics Development Limited. All rights reserved.
+ * Class that represents a Ball Throw
  */
-
 public class BallThrow {
 
     private int id;

@@ -3,8 +3,7 @@ package com.paradoxcat.bowlingscore.model;
 import java.util.List;
 
 /**
- * Created by diego.alonso 17/07/2018.
- * Copyright © 2018. Fleetmatics Development Limited. All rights reserved.
+ * Class that represents an OpenFrame
  */
 public class OpenFrame extends Frame {
 

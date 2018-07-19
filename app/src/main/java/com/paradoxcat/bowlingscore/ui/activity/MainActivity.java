@@ -2,16 +2,20 @@ package com.paradoxcat.bowlingscore.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.paradoxcat.bowlingscore.R;
 import com.paradoxcat.bowlingscore.ui.fragment.MainFragment;
 
 /**
- * Activity that will show a list of blacklisted apps, add new apps to the black list and start/stop
- * a background service to check which app is on the foreground
+ * Activity that will show a list of bowling frames scores
  */
 public class MainActivity extends BaseActivity {
+
+    private FragmentTransaction transaction;
+    private Fragment fragment = new MainFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +28,21 @@ public class MainActivity extends BaseActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainFragment fragment = new MainFragment();
-                fragment.startBowlingGame();
+                loadFragments();
             }
         });
+    }
+
+    /**
+     * Method that load the fragments
+     */
+    private void loadFragments() {
+        transaction = getSupportFragmentManager().beginTransaction();
+        transaction.remove(fragment);
+        fragment = new MainFragment();
+        transaction.add(R.id.fragment_container, fragment);
+
+        transaction.commit();
     }
 
 }

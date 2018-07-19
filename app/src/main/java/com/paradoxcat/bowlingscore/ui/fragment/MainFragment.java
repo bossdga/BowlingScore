@@ -7,25 +7,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.paradoxcat.bowlingscore.R;
 import com.paradoxcat.bowlingscore.adapter.FrameAdapter;
 import com.paradoxcat.bowlingscore.model.BallThrow;
 import com.paradoxcat.bowlingscore.model.BowlingGame;
-import com.paradoxcat.bowlingscore.model.Frame;
 
-import java.util.List;
 import java.util.Random;
 
 /**
- * Fragment that will show a list of blacklisted apps, add new apps to the black list and start/stop
- * a background service to check which app is on the foreground
+ * Fragment that will show a list of bowling frames scores
  */
 public class MainFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager linearLayoutManager;
     private FrameAdapter adapter;
+    private TextView totalScore;
 
     public MainFragment() {
     }
@@ -43,6 +42,7 @@ public class MainFragment extends BaseFragment {
 
         setHasOptionsMenu(true);
 
+        totalScore = rootView.findViewById(R.id.TotalScore);
         mRecyclerView = rootView.findViewById(R.id.recyclerView);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -53,6 +53,7 @@ public class MainFragment extends BaseFragment {
     }
 
     public void startBowlingGame() {
+        showProgressDialog();
         BowlingGame bowlingGame = new BowlingGame();
         for (int i = 0; i < 10; i++) {
             BallThrow firstBallThrow = new BallThrow(getThrowNumber());
@@ -90,7 +91,8 @@ public class MainFragment extends BaseFragment {
         adapter = new FrameAdapter(bowlingGame.getFrames(), MainFragment.this.getActivity());
         mRecyclerView.setAdapter(adapter);
 
-        System.out.println("::: " + bowlingGame.getScore());
+        totalScore.setText("Total Score: " + bowlingGame.getScore());
+        hideProgressDialog();
     }
 
     private int getThrowNumber() {

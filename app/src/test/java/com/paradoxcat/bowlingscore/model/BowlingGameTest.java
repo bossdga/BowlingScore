@@ -6,8 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by diego.alonso 18/07/2018.
- * Copyright © 2018. Fleetmatics Development Limited. All rights reserved.
+ * Class to test the Bowling Game
  */
 public class BowlingGameTest {
 
